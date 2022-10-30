@@ -1,0 +1,17 @@
+{
+  "name": "sqe_never_ending",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.7.0",
+    "chromedriver": "^107.0.0",
+    "nightwatch": "^2.4.1"
+  }
+}
