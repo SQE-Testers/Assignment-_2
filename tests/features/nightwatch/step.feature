@@ -1,10 +1,16 @@
 Feature: Search
 
     Feature Description
-@Scenario
 
-Scenario: Search Product
+Scenario Outline:  Search Product
+
 Given the user is on product page
-When I Search "Bags"
-Then the body contains "Bags"
+When I Search <Input>
+Then the body contains <Output>
+
+Examples:
+|Input   | Output  |
+|"Bags"  | "Bags"  |
+| " "    | "Error" |
+| "-1"   | "Error" |
 
