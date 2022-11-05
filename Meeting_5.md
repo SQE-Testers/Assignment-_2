@@ -19,3 +19,6 @@ So what we can do is:
 
 - [Muneeb Waqas](https://github.com/muneebwaqas416)
 
+- [Mohsin Ali](https://github.com/mohsinali1051)
+
+- [Faiq Hassan](https://github.com/faiqhassan420)
