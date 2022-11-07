@@ -4,7 +4,6 @@ import jsonpath
 import pytest
 
 url="http://magento2demo.firebearstudio.com/rest/all/V1/applepay/auth"
-
 def test_main():
     response=requests.get(url)
     response = json.loads(response.text)
