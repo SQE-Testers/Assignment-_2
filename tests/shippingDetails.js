@@ -8,19 +8,22 @@ module.exports = {
         //browser.pause(1000)
 
         browser.click("#narrow-by-list2 > dd > ol > li:nth-child(1) > a")
-        //browser.pause(1000)
+        browser.pause(1000)
 
         browser.click("#maincontent > div.columns > div.column.main > div.products.wrapper.grid.products-grid > ol > li:nth-child(1) > div > a > span > span > img")
         browser.pause(3000)
 
         browser.click("#product-addtocart-button > span")
-        browser.pause(3000)
+        browser.pause(4000)
+
+
+        
 
         browser.click("body > div.page-wrapper > header > div.header.content > div.minicart-wrapper > a")
-        browser.pause(1000)
+        browser.pause(5000)
 
         browser.click("#top-cart-btn-checkout")
-        browser.pause(1000)
+        browser.pause(5000)
 
         //browser.setValue('#customer-email',[string,"mohsin@gamil.com"])
         browser.sendKeys('#customer-email', 'nightwatchooo');
