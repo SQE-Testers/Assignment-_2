@@ -5,3 +5,6 @@ available at https://github.com/magento/magento2/blob/2.4-develop/app/code/Magen
 REST API:
 There are other types of APIs used by Magento like SOAP but for the sake of documentation I am choosing REST API.A REST API is a way for two computer systems to communicate using the HTTP technologies found in web browsers and servers. Sharing data between two or more systems has always been a fundamental requirement of software development. For example, consider buying motor insurance.
 
+Unit Test:
+This will be a unit testing of class ParamOverriderCustomerIdTest.php in which we are checking the overrided ID is of Customer ID or Admin ID.
+
