@@ -3,7 +3,9 @@ I have selected the documentation of ParamOverriderCustomerIdTest.php
 available at https://github.com/magento/magento2/blob/2.4-develop/app/code/Magento/Webapi/Test/Unit/Controller/Rest/ParamOverriderCustomerIdTest.php.
 
 REST API:
-There are other types of APIs used by Magento like SOAP but for the sake of documentation I am choosing REST API.A REST API is a way for two computer systems to communicate using the HTTP technologies found in web browsers and servers. Sharing data between two or more systems has always been a fundamental requirement of software development. For example, consider buying motor insurance.
+There are other types of APIs used by Magento like SOAP but for the sake of documentation I am choosing REST API.A REST API is a way for two computer systems
+to communicate using the HTTP technologies found in web browsers and servers. Sharing data between two or more systems has always been a fundamental requirement
+of software development. For example, consider buying motor insurance.
 
 Unit Test:
 This will be a unit testing of class ParamOverriderCustomerIdTest.php in which we are checking the overrided ID is of Customer ID or not.
@@ -38,8 +40,11 @@ protected function setUp(): void
         );
     }
 
--->getMockBuilder(UserContextInterface::class) methods provided by PHPUnit can be used in a test to automatically generate an object that can act as a test double for the specified original type (interface or class name). This test double object can be used in every context where an object of the original type is expected or required.
-Return value is being stored in userContext and Magento Object Manager is a PHP class responsible for creating and retrieving objects in Magento. It also manages to create factories and proxies and returns in model variable.
+-->getMockBuilder(UserContextInterface::class) methods provided by PHPUnit can be used in a test to automatically generate an object that can act as
+a test double for the specified original type (interface or class name). This test double object can be used in every context where an object of the original 
+type is expected or required.
+Return value is being stored in userContext and Magento Object Manager is a PHP class responsible for creating and retrieving objects in Magento. 
+It also manages to create factories and proxies and returns in model variable.
 
 
 
@@ -58,7 +63,9 @@ Return value is being stored in userContext and Magento Object Manager is a PHP 
     }
 
 --> expects() accepts matchers constraints.
-When a method call happens, every expectation checks whether it matches. It only uses the matches and constraints above. It does not use the arguments passed into with. That is only used to verify whether the behavior is the correct one. If there is a match and verification also passed then comes the invocation part as prescribed in will.
+When a method call happens, every expectation checks whether it matches. It only uses the matches and constraints above. It does not use the arguments passed 
+into with. That is only used to verify whether the behavior is the correct one. If there is a match and verification also passed then comes the invocation 
+part as prescribed in will.
 Lastly, assertSame is validating retValue is same as this->model->getOverriddenValue(), if it is true then test case will pass otherwise it will fail.
 
 
@@ -71,8 +78,10 @@ Lastly, assertSame is validating retValue is same as this->model->getOverriddenV
         $this->assertNull($this->model->getOverriddenValue());
     }
 --> expects() accepts matchers constraints.
-When a method call happens, every expectation checks whether it matches. It only uses the matches and constraints above. It does not use the arguments passed into with. That is only used to verify whether the behavior is the correct one. If there is a match and verification also passed then comes the invocation part as prescribed in will.
-Lastly, assertNull is validating this->model->getOverriddenValue() is not customer if it is not customer test case willl pass otherwise in case of admin it will fail.
+When a method call happens, every expectation checks whether it matches. It only uses the matches and constraints above. It does not use the arguments passed 
+into with. That is only used to verify whether the behavior is the correct one. If there is a match and verification also passed then comes the invocation part as prescribed in will.
+Lastly, assertNull is validating this->model->getOverriddenValue() is not customer if it is not customer test case willl pass otherwise in case of admin it 
+will fail.
 
 
  
