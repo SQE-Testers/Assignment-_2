@@ -4,9 +4,11 @@
 You can test the Magento Web API from the perspective of a client application using the Web API testing framework. Both REST and SOAP can be utilised with the tests. The PHPUnit configuration specifies the REST or SOAP adaptor that executes the tests.
      
 Implementation Details:
+
 The integration testing framework is a prerequisite for the Web API functional testing framework.
 
 Custom Annotations for Data Fixtures:
+
 The specific annotation @magentoApiDataFixture is provided for declaring fixtures solely in the Web API functional tests. This annotation differs from @magentoDataFixture in that HTTP requests made within the test body will result in the fixture being committed and available. The usage guidelines for @magentoApiDataFixture and @magentoDataFixture are identical.
 
 After test execution, data that was added to the DB using @magentoApiDataFixture won't be automatically erased. Utilizing @magentoDataFixture clears the data.
@@ -15,60 +17,61 @@ Fixtures shouldn't be defined in dev/tests/api-functional. Instead, they must co
 Clear all entities produced in fixture files or during test execution from the database to maintain a clean test environment. Either directly in tearDown or through a similar rollback for the fixture file, this can be accomplished.
 
 How to Create a New Test:
+
 The generic test case should be the ancestor for all Web API functional tests. Magento\TestFramework\TestCase\WebapiAbstract. The _webApiCall() method, which is what should be used to make Web API calls from tests, is defined. The adapter that will be utilised to make the remote call is unknown to clients of _webApiCall().
 
-namespace Magento\Webapi\Routing;
-class CoreRoutingTest extends \Magento\TestFramework\TestCase\WebapiAbstract
-{
-    public function testBasicRoutingExplicitPath()
-    {
-        $itemId = 1;
-        $serviceInfo = [
-            'rest' => [
-                'resourcePath' => '/V1/testmodule1/' . $itemId,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-            ],
-            'soap' => [
-                'service' => 'testModule1AllSoapAndRestV1',
-                'operation' => 'testModule1AllSoapAndRestV1Item',
-            ],
-        ];
-        $requestData = ['itemId' => $itemId];
-        $item = $this->_webApiCall($serviceInfo, $requestData);
-        $this->assertEquals('testProduct1', $item['name'], "Item was retrieved unsuccessfully");
-    }
-}
+          namespace Magento\Webapi\Routing;
+          class CoreRoutingTest extends \Magento\TestFramework\TestCase\WebapiAbstract
+          {
+              public function testBasicRoutingExplicitPath()
+              {
+                  $itemId = 1;
+                  $serviceInfo = [
+                      'rest' => [
+                          'resourcePath' => '/V1/testmodule1/' . $itemId,
+                          'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
+                      ],
+                      'soap' => [
+                          'service' => 'testModule1AllSoapAndRestV1',
+                          'operation' => 'testModule1AllSoapAndRestV1Item',
+                      ],
+                  ];
+                  $requestData = ['itemId' => $itemId];
+                  $item = $this->_webApiCall($serviceInfo, $requestData);
+                  $this->assertEquals('testProduct1', $item['name'], "Item was retrieved unsuccessfully");
+              }
+          }
 
 Depending on the adapter that the testing framework is presently using, the aforementioned test should be able to test both SOAP and REST. The Web API client adapter interface specifies the format of $serviceInfo:
 
-namespace Magento\TestFramework\TestCase\Webapi;
-interface AdapterInterface
-{
-    /**
-     * Perform call to the specified service method.
-     *
-     * @param array $serviceInfo <pre>
-     * array(
-     *     'rest' => array(
-     *         'resourcePath' => $resourcePath, // e.g. /products/:id
-     *         'httpMethod' => $httpMethod,     // e.g. GET
-     *         'token' => '21hasbtlaqy8t3mj73kjh71cxxkqj4aq'    // optional : for token based Authentication. Will
-     *                                                             override default OAuth based authentication provided
-     *                                                             by test framework
-     *     ),
-     *     'soap' => array(
-     *         'service' => $soapService,    // soap service name with Version suffix e.g. catalogProductV1, customerV2
-     *         'operation' => $operation     // soap operation name e.g. catalogProductCreate
-     *     )
-     * );
-     * </pre>
-     * @param array $arguments
-     * @param string|null $storeCode if store code not provided, default store code will be used
-     * @param \Magento\Integration\Model\Integration|null $integration
-     * @return array|string|int|float|bool
-     */
-    public function call($serviceInfo, $arguments = [], $storeCode = null, $integration = null);
-}
+          namespace Magento\TestFramework\TestCase\Webapi;
+          interface AdapterInterface
+          {
+              /**
+               * Perform call to the specified service method.
+               *
+               * @param array $serviceInfo <pre>
+               * array(
+               *     'rest' => array(
+               *         'resourcePath' => $resourcePath, // e.g. /products/:id
+               *         'httpMethod' => $httpMethod,     // e.g. GET
+               *         'token' => '21hasbtlaqy8t3mj73kjh71cxxkqj4aq'    // optional : for token based Authentication. Will
+               *                                                             override default OAuth based authentication provided
+               *                                                             by test framework
+               *     ),
+               *     'soap' => array(
+               *         'service' => $soapService,    // soap service name with Version suffix e.g. catalogProductV1, customerV2
+               *         'operation' => $operation     // soap operation name e.g. catalogProductCreate
+               *     )
+               * );
+               * </pre>
+               * @param array $arguments
+               * @param string|null $storeCode if store code not provided, default store code will be used
+               * @param \Magento\Integration\Model\Integration|null $integration
+               * @return array|string|int|float|bool
+               */
+              public function call($serviceInfo, $arguments = [], $storeCode = null, $integration = null);
+          }
 
 
 How to Run the Tests:
