@@ -1,9 +1,9 @@
-Selection of Magento API Test:
-I have selected the documentation of ParamOverriderCustomerIdTest.php
+Selection of Magento Unit Test case:
+I have selected ParamOverriderCustomerIdTest.php for documentation
 available at https://github.com/magento/magento2/blob/2.4-develop/app/code/Magento/Webapi/Test/Unit/Controller/Rest/ParamOverriderCustomerIdTest.php.
 
 REST API:
-There are other types of APIs used by Magento like SOAP but for the sake of documentation I am choosing REST API.A REST API is a way for two computer systems
+There are other types of APIs used by Magento like SOAP but for the sake of documentation I am choosing REST API. A REST API is a way for two computer systems
 to communicate using the HTTP technologies found in web browsers and servers. Sharing data between two or more systems has always been a fundamental requirement
 of software development. For example, consider buying motor insurance.
 
