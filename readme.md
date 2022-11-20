@@ -1,11 +1,12 @@
+
+     API Testing
+
 You can test the Magento Web API from the perspective of a client application using the Web API testing framework. Both REST and SOAP can be utilised with the tests. The PHPUnit configuration specifies the REST or SOAP adaptor that executes the tests.
      
-     Implementation Details
-      
+Implementation Details:
 The integration testing framework is a prerequisite for the Web API functional testing framework.
 
-     Custom Annotations for Data Fixtures
-
+Custom Annotations for Data Fixtures:
 The specific annotation @magentoApiDataFixture is provided for declaring fixtures solely in the Web API functional tests. This annotation differs from @magentoDataFixture in that HTTP requests made within the test body will result in the fixture being committed and available. The usage guidelines for @magentoApiDataFixture and @magentoDataFixture are identical.
 
 After test execution, data that was added to the DB using @magentoApiDataFixture won't be automatically erased. Utilizing @magentoDataFixture clears the data.
@@ -13,9 +14,7 @@ Fixtures shouldn't be defined in dev/tests/api-functional. Instead, they must co
 
 Clear all entities produced in fixture files or during test execution from the database to maintain a clean test environment. Either directly in tearDown or through a similar rollback for the fixture file, this can be accomplished.
 
-
-     How to Create a New Test
-     
+How to Create a New Test:
 The generic test case should be the ancestor for all Web API functional tests. Magento\TestFramework\TestCase\WebapiAbstract. The _webApiCall() method, which is what should be used to make Web API calls from tests, is defined. The adapter that will be utilised to make the remote call is unknown to clients of _webApiCall().
 
 namespace Magento\Webapi\Routing;
@@ -72,8 +71,8 @@ interface AdapterInterface
 }
 
 
-How to Run the Tests
-Prerequisites
+How to Run the Tests:
+Prerequisites:
 1: Install the PHP Soap extension.
 
 Copy php_soap.dll or php_soap.so to your PHP extensions directory. Edit your php.ini file and enable the PHP Soap extension. Usually this means deleting the leading semi-colon in front of the extension. Then restart Apache.
@@ -82,7 +81,7 @@ extension=php_soap.dll
 
 2: Before running the functional tests you need to clear your cache. Now you are ready to run the tests.
 
-Running the Tests
+Running the Tests:
 1: Copy dev/tests/api-functional/phpunit_rest.xml.dist and phpunit_soap.xml.dist to dev/tests/api-functional/phpunit_rest.xml and phpunit_soap.xml.
 
 2: Define the Magento instance URL as a value of TESTS_BASE_URL, Test Webservice User as value of TESTS_WEBSERVICE_USER and Test Webservice API key as value of TESTS_WEBSERVICE_APIKEY in copied file i.e. phpunit_rest.xml or phpunit_soap.xml.
